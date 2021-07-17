@@ -11,7 +11,7 @@ const ArticlePage = (props) => {
 	const otherArticles = articleContent.filter(
 		(article) => article.name !== name
 	);
-	window.scrollTo(0, 0);
+	window.scrollTo({ top: 0, behavior: 'smooth' });
 	return (
 		<>
 			<h1>{article.name}</h1>
