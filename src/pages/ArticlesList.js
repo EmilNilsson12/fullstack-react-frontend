@@ -6,7 +6,7 @@ const ArticlesList = () => {
 	return (
 		<>
 			<h1>Articles</h1>
-			<ul>
+			<ul className='ul-articles-long'>
 				{articles.map((article, key) => (
 					<li key={key}>
 						<Link to={`/article/${article.name}`}>
