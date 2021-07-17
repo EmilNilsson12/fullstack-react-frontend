@@ -1,9 +1,19 @@
 import React from 'react';
+import articleContent from './article-content';
+import ArticlesList from './ArticlesList_short';
 
-const ArticlePage = () => {
+const ArticlePage = ({ match }) => {
+	const name = match.params.name;
+	const article = articleContent.find((article) => article.name === name);
+
+	if (!article) return <h1>Article does not exist</h1>;
 	return (
 		<>
-			<h1>This is an article</h1>
+			<ArticlesList />
+			<h1>{article.name}</h1>
+			{article.content.map((paragraph, key) => (
+				<p key={key}>{paragraph}</p>
+			))}
 		</>
 	);
 };
