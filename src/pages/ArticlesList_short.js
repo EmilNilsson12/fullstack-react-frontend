@@ -5,9 +5,9 @@ import articles from './article-content';
 const ArticlesList = () => {
 	return (
 		<>
-			<h2>
-				<Link to='/articles-list'>All articles</Link>
-			</h2>
+			<h1>
+				<Link to='/articles-list'>Show all articles</Link>
+			</h1>
 			<ul>
 				{articles.map((article, key) => (
 					<li key={key}>
