@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import articleContent from '../data/article-content';
 import ArticlesList from '../components/ArticlesList';
+import CommentsList from '../components/CommentsList';
 import NotFoundPage from './NotFoundPage';
 
 const ArticlePage = (props) => {
@@ -13,6 +14,7 @@ const ArticlePage = (props) => {
 			const result = await fetch(`http://localhost:8000/api/articles/${name}`);
 			const body = await result.json();
 			setArticleInfo(body);
+			window.scrollTo(0, 0);
 		};
 		fetchData();
 	}, [name]);
@@ -29,7 +31,6 @@ const ArticlePage = (props) => {
 	const otherArticles = articleContent.filter(
 		(article) => article.name !== name
 	);
-	window.scrollTo({ top: 0, behavior: 'smooth' });
 	return (
 		<>
 			<h1>{article.title}</h1>
@@ -37,6 +38,7 @@ const ArticlePage = (props) => {
 			{article.content.map((paragraph, key) => (
 				<p key={key}>{paragraph}</p>
 			))}
+			<CommentsList comments={articleInfo.comments} />
 			<h2>Other interesting articles</h2>
 			<ArticlesList articles={otherArticles} shortVersion={true} />
 		</>
