@@ -22,7 +22,7 @@ const ArticlePage = (props) => {
 	window.scrollTo({ top: 0, behavior: 'smooth' });
 	return (
 		<>
-			<h1>{article.name}</h1>
+			<h1>{article.title}</h1>
 			{article.content.map((paragraph, key) => (
 				<p key={key}>{paragraph}</p>
 			))}
